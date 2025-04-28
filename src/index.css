@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your existing styles */
+
+/* Add text-size-adjust for cross-browser compatibility */
+html, body {
+    -webkit-text-size-adjust: 100%;  /* For WebKit-based browsers (e.g., older Safari and Chrome Android) */
+    text-size-adjust: 100%;          /* For modern browsers like Chrome, Firefox, Edge */
+  }
+  
