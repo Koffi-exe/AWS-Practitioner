@@ -1,15 +1,17 @@
-import React, {  useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom"; // Import navigate
+import React, { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import useSignupStore from "../stores/signupStore";
+// import * as Amplify from 'aws-amplify';
 
 const Signup1 = () => {
-  const {email, setEmail } = useSignupStore();
-  const navigate = useNavigate(); // Hook for navigation
+  const { email, setEmail, password, setPassword } = useSignupStore();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("Full Name:", fullname, "Email:", email);
-    navigate("/signupOTP"); // Uncomment when ready to navigate
+
+    navigate("/signupOTP"); // Pass email to the next page
+
   };
 
   useEffect(() => {
@@ -25,7 +27,6 @@ const Signup1 = () => {
         onSubmit={handleSubmit}
         className="flex flex-col p-8 rounded-lg shadow-md w-full max-w-md min-h-screen"
       >
-        {/* Heading */}
         <div className="mb-16">
           <h2 className="font-black text-5xl">
             Let's get you
@@ -35,9 +36,6 @@ const Signup1 = () => {
           <p className="text-lg">Give us a little info about you</p>
         </div>
 
-        {/* Full Name Input */}
-
-
         {/* Email Input */}
         <div className="mb-4 w-full">
           <input
@@ -46,6 +44,19 @@ const Signup1 = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full h-14 px-4 py-2 text-white_text font-bold text-lg border-solid-black bg-input_black rounded-full focus:outline-none focus:bg-input_focus focus:ring-1 focus:ring-black-200"
+          />
+        </div>
+
+        {/* Password Input */}
+        <div className="mb-4 w-full">
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
             className="w-full h-14 px-4 py-2 text-white_text font-bold text-lg border-solid-black bg-input_black rounded-full focus:outline-none focus:bg-input_focus focus:ring-1 focus:ring-black-200"
           />

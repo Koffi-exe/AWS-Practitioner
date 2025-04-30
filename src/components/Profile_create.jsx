@@ -62,7 +62,7 @@ const ProfileCreate = () => {
       });
 
       // Navigate to the next step after profile creation
-      navigate("/signupCreatePassword");
+      navigate("/profile");
       setIsLoading(false);
     }, 2000);
   };
