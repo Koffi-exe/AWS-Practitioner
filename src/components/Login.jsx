@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
+import {Amplify} from 'aws-amplify';
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -10,8 +12,13 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const user = await Amplify.Auth.signIn(username, password);
+      alert("Login successful!");
     navigate("/profile"); // Use navigate instead of Navigate()
-
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   useEffect(() => {
